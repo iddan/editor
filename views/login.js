@@ -12,6 +12,9 @@ export default class Login extends SmartComponent {
         api.login(state)
         .then(onLogin)
         .catch(error => this.setState({error}));
+        // api.login(state)
+        // .then(onLogin)
+        // .catch(error => this.setState({error}));
     }
     render () {
         return <div>

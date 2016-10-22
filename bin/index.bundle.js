@@ -11299,6 +11299,9 @@ var Login = function (_SmartComponent) {
             api.login(state).then(onLogin).catch(function (error) {
                 return _this2.setState({ error: error });
             });
+            // api.login(state)
+            // .then(onLogin)
+            // .catch(error => this.setState({error}));
         }
     }, {
         key: 'render',
@@ -11374,7 +11377,12 @@ var Panel = function (_Component) {
             return _react2.default.createElement(
                 'div',
                 null,
-                'Panel'
+                _react2.default.createElement(
+                    'h1',
+                    null,
+                    'Panel'
+                ),
+                _react2.default.createElement('ul', null)
             );
         }
     }]);
@@ -11401,6 +11409,10 @@ var _react = __webpack_require__(20);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _smartComponent = __webpack_require__(93);
+
+var _smartComponent2 = _interopRequireDefault(_smartComponent);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -11409,28 +11421,87 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Repos = function (_Component) {
-    _inherits(Repos, _Component);
+var Repos = function (_SmartComponent) {
+    _inherits(Repos, _SmartComponent);
 
     function Repos() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, Repos);
 
-        return _possibleConstructorReturn(this, (Repos.__proto__ || Object.getPrototypeOf(Repos)).apply(this, arguments));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
+
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Repos.__proto__ || Object.getPrototypeOf(Repos)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+            repos: []
+        }, _temp), _possibleConstructorReturn(_this, _ret);
     }
 
     _createClass(Repos, [{
+        key: 'add',
+        value: function add() {
+            var _context,
+                _this2 = this;
+
+            var api = this.context.api;
+
+            api.user.createRepo(this.refs.name).then((_context = api.user, api.user.getRepos).bind(_context)).then(function (repos) {
+                return _this2.setState({ repos: repos });
+            });
+        }
+    }, {
+        key: 'componentWillMount',
+        value: function componentWillMount() {
+            var _this3 = this;
+
+            var api = this.context.api;
+
+            api.user.getRepos().then(function (repos) {
+                return _this3.setState({ repos: repos });
+            });
+        }
+    }, {
         key: 'render',
         value: function render() {
+            var onSelect = this.props.onSelect;
+            var repos = this.state.repos;
+
             return _react2.default.createElement(
                 'div',
                 null,
-                'Repos'
+                _react2.default.createElement(
+                    'h1',
+                    null,
+                    'Repos'
+                ),
+                _react2.default.createElement('input', { ref: name, type: 'text', placeholder: 'blog name' }),
+                _react2.default.createElement(
+                    'button',
+                    { onClick: this.add.bind(this) },
+                    'ADD'
+                ),
+                _react2.default.createElement(
+                    'ul',
+                    null,
+                    repos.map(function (repo) {
+                        return _react2.default.createElement(
+                            'li',
+                            { onClick: function onClick() {
+                                    return onSelect(repo);
+                                } },
+                            repo.name
+                        );
+                    })
+                )
             );
         }
     }]);
 
     return Repos;
-}(_react.Component);
+}(_smartComponent2.default);
 
 exports.default = Repos;
 

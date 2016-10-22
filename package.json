@@ -1,0 +1,23 @@
+{
+  "name": "editor",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "yarn run build -- --watch",
+    "build": "webpack --progress"
+  },
+  "dependencies": {
+    "babel-core": "^6.17.0",
+    "babel-loader": "^6.2.5",
+    "babel-preset-latest": "^6.16.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-0": "^6.16.0",
+    "classnames": "^2.2.5",
+    "delux": "^1.4.1",
+    "delux-react": "^v1.4.0",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "webpack": "beta"
+  }
+}

@@ -1,0 +1,14 @@
+# New repo with auto_init
+curl -u liorsbg -X POST --data '{"name":"test-pages-2", "auto_init":"true"}' https://api.github.com/user/repos
+
+# Get master ref sha from here:
+curl https://api.github.com/repos/liorsbg/test-pages-2/git/refs/heads/master
+
+# Use master ref sha to create new branch gh-pages
+curl -u liorsbg -X POST --data '{"ref": "refs/heads/gh-pages", "sha": "083d455590c2d17fa82742de1df9696c3c7820bd"}' https://api.github.com/repos/liorsbg/test-pages-2/git/refs
+  
+# Use gh-pages ref sha to get tree sha
+curl https://api.github.com/repos/liorsbg/test-pages-2/git/trees/083d455590c2d17fa82742de1df9696c3c7820bd
+
+# Use tree sha to commit
+curl -u liorsbg -X POST -d '{ "message": "my commit message", "parents": ["083d455590c2d17fa82742de1df9696c3c7820bd"], "tree": "5de84ad46e4648f8f22abb0f9591eb66421f4fa3"}' https://api.github.com/repos/liorsbg/test-pages-2/git/commits

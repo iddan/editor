@@ -1,21 +1,17 @@
 import React from 'react';
-import {ConnectedComponent} from 'delux-react';
+import SmartComponent from './smart-component';
 
-export default class Login extends ConnectedComponent {
-    static collections = ['user']
+export default class Login extends SmartComponent {
     state = {
         username: '',
         password: '',
-        user: {
-
-        }
+        error: undefined
     }
     login () {
-        let {state: {username, password}} = this;
-        this.dispatch({
-            type: 'login',
-            payload: {username, password}
-        });
+        let {props: {onLogin}, state, context: {api}} = this;
+        api.login(state)
+        .then(onLogin)
+        .catch(error => this.setState({error}));
     }
     render () {
         return <div>
@@ -23,7 +19,7 @@ export default class Login extends ConnectedComponent {
             <input type="text" placeholder="Username" onChange={e => this.setState({username: e.target.value})} value={this.state.username} />
             <input type="password" placeholder="Password" onChange={e => this.setState({password: e.target.value})} value={this.state.password} />
             <button onClick={::this.login}>Login</button>
-            {this.state.user.error ? 'Can\'t login' : ''}
+            {this.state.error ? 'Can\'t login' : ''}
         </div>;
     }
 }

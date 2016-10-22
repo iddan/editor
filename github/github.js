@@ -3,7 +3,7 @@ class Repo {
         Object.assign(this, props);
     }
     commit (message) {
-
+        
     }
 }
 

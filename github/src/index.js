@@ -1,24 +1,4 @@
-class Repo {
-    constructor (props) {
-        Object.assign(this, props);
-    }
-    commit (message) {
-        
-    }
-}
-
-class User {
-    constructor (props) {
-        Object.assign(this, props);
-    }
-    getRepos () {
-        return Promise.resolve(
-            this.repos ||
-            this.api.fetch(this.repos_url)
-            .then(res => this.repos = res.map(repo => new Repo(repo)))
-        );
-    }
-}
+import User from './user';
 
 export default class GitHub {
     api_url = 'https://api.github.com'

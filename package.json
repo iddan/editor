@@ -16,6 +16,7 @@
     "classnames": "^2.2.5",
     "delux": "^1.4.1",
     "delux-react": "^v1.4.0",
+    "draft-js": "^0.9.1",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "webpack": "beta"

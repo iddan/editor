@@ -12,3 +12,6 @@ curl https://api.github.com/repos/liorsbg/test-pages-2/git/trees/083d455590c2d17
 
 # Use tree sha to commit
 curl -u liorsbg -X POST -d '{ "message": "my commit message", "parents": ["083d455590c2d17fa82742de1df9696c3c7820bd"], "tree": "5de84ad46e4648f8f22abb0f9591eb66421f4fa3"}' https://api.github.com/repos/liorsbg/test-pages-2/git/commits
+
+# Good reference for next steps:
+http://www.levibotelho.com/development/commit-a-file-with-the-github-api

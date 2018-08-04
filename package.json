@@ -18,7 +18,7 @@
     "delux-react": "^v1.4.0",
     "draft-js": "^0.9.1",
     "react": "^15.3.2",
-    "react-dom": "^15.3.2",
+    "react-dom": "^16.0.1",
     "webpack": "beta"
   },
   "devDependencies": {

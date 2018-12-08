@@ -19,7 +19,7 @@
     "draft-js": "^0.9.1",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
-    "webpack": "beta"
+    "webpack": "2.2.0"
   },
   "devDependencies": {
     "babel-loader": "^6.2.5",
